@@ -8,6 +8,7 @@ export default function NavigationScreen() {
         <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen name = "Home" component={HomeScreenNavigator} />
             <Drawer.Screen name = "Login" component={LoginScreenNavigator} />
+            <Drawer.Screen name = "Registration" component={RegistrationScreenNavigator} />
             <Drawer.Screen name = "Categories" component={ProductScreenNavigator} />
             {/* <Drawer.Screen name = "Logout" component={LogoutScreenNavigator} /> */}
         </Drawer.Navigator>
@@ -37,6 +38,18 @@ function LoginScreenNavigator() {
             <LoginScreenStack.Screen name ="Login" component={LoginScreen} options = {{headerTitle: 'Login', headerLeft: () => <MenuIcon />}}
             />
         </LoginScreenStack.Navigator>
+    )
+}
+
+import RegistrationScreen from '../RegistrationScreen/RegistrationScreen';
+
+const RegistrationScreenStack = createStackNavigator()
+function RegistrationScreenNavigator() {
+    return(
+        <RegistrationScreenStack.Navigator>
+            <RegistrationScreenStack.Screen name ="Registration" component={RegistrationScreen} options = {{headerTitle: 'Registration', headerLeft: () => <MenuIcon />}}
+            />
+        </RegistrationScreenStack.Navigator>
     )
 }
 

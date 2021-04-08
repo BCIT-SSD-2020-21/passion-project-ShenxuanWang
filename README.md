@@ -4,16 +4,16 @@
 
 ## Dependences for installation
 * npm install @expo/vector-icons
-* npm install react-native-gesture-handler
-* npm install @react-navigation/native
-* npm install @react-navigation/drawer
-* npm install @react-navigation/stack
-* npm install react-native-safe-area-context
-* npm install react-native-screens
-* npm install react-native-reanimated
-* npm install firebase
-* npm install @firebase/auth
-* npm install @firebase/firestore
+* npm/expo install react-native-gesture-handler
+* npm/expo install @react-navigation/native
+* npm/expo install @react-navigation/drawer
+* npm/expo install @react-navigation/stack
+* npm/expo install react-native-safe-area-context
+* npm/expo install react-native-screens
+* npm/expo install react-native-reanimated
+* npm/expo install firebase
+* npm/expo install @firebase/auth
+* npm/expo install @firebase/firestore
 * expo install react-native-keyboard-aware-scroll-view
 
 ## Prototypes Images
