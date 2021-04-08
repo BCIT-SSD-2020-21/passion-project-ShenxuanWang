@@ -13,6 +13,7 @@
 * npm install react-native-reanimated
 * npm install firebase
 * npm install @firebase/auth
+* npm install @firebase/firestore
 
 ## Prototypes Images
 * Login Screen
