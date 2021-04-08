@@ -10,9 +10,12 @@ export default StyleSheet.create({
         height: 150
     },
     name: {
-        height: 250,
+        height: 150,
         fontSize: 24,
         fontWeight: 'bold',
+        textAlignVertical: 'center',
+        marginTop: 10,
+        marginBottom: 30
     },
     heading: {
         color: '#b38df7',
@@ -30,7 +33,16 @@ export default StyleSheet.create({
     },
     para: {
         fontSize: 14,
-        margin: 10,
+        margin: 5,
         marginLeft: 20
+    },
+    product: {
+        width: 200,
+        fontSize: 14,
+        borderWidth: 1,
+        textAlign: 'center'
+    },
+    box: {
+        alignItems: 'center'
     }
 })
