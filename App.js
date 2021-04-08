@@ -21,7 +21,7 @@ export default function App() {
                     <Stack.Screen name="Home" component={NavigationScreen}  options={{headerShown: false}}/>
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Registration" component={RegistrationScreen} />                                        
-                    <Stack.Screen name="Catagories" component={ProductScreen} />
+                    <Stack.Screen name="Categories" component={ProductScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaProvider>
