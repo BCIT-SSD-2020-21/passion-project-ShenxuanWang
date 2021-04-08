@@ -8,7 +8,7 @@ export default function NavigationScreen() {
         <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen name = "Home" component={HomeScreenNavigator} />
             <Drawer.Screen name = "Login" component={LoginScreenNavigator} />
-            <Drawer.Screen name = "Catagories" component={ProductScreenNavigator} />
+            <Drawer.Screen name = "Categories" component={ProductScreenNavigator} />
             {/* <Drawer.Screen name = "Logout" component={LogoutScreenNavigator} /> */}
         </Drawer.Navigator>
     )
@@ -46,7 +46,7 @@ const ProductScreenStack = createStackNavigator()
 function ProductScreenNavigator() {
     return(
         <ProductScreenStack.Navigator>
-            <ProductScreenStack.Screen name ="Catagories" component={ProductScreen} options = {{headerTitle: 'Products', headerLeft: () => <MenuIcon />}}
+            <ProductScreenStack.Screen name ="Categories" component={ProductScreen} options = {{headerTitle: 'Products', headerLeft: () => <MenuIcon />}}
             />
         </ProductScreenStack.Navigator>
     )
