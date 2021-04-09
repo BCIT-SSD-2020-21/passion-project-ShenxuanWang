@@ -18,8 +18,8 @@ export default function App() {
         <SafeAreaProvider>
             <NavigationContainer>
                 <Stack.Navigator>
-                    <Stack.Screen name="Home" component={NavigationScreen}  options={{headerShown: false}}/>
                     <Stack.Screen name="Login" component={LoginScreen} />
+                    <Stack.Screen name="Home" component={NavigationScreen}  options={{headerShown: false}}/>                    
                     <Stack.Screen name="Registration" component={RegistrationScreen} />                                        
                     <Stack.Screen name="Categories" component={ProductScreen} />
                 </Stack.Navigator>

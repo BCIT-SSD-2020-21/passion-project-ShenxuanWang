@@ -7,9 +7,9 @@ export default function NavigationScreen() {
     return(
         <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen name = "Home" component={HomeScreenNavigator} />
-            <Drawer.Screen name = "Login" component={LoginScreenNavigator} />
+            {/* <Drawer.Screen name = "Login" component={LoginScreenNavigator} /> */}
             <Drawer.Screen name = "Categories" component={ProductScreenNavigator} />
-            {/* <Drawer.Screen name = "Logout" component={LogoutScreenNavigator} /> */}
+            <Drawer.Screen name = "Logout" component={LogoutScreenNavigator} />
         </Drawer.Navigator>
     )
 }
@@ -28,17 +28,17 @@ function HomeScreenNavigator() {
     )
 }
 
-import LoginScreen from '../LoginScreen/LoginScreen';
+// import LoginScreen from '../LoginScreen/LoginScreen';
 
-const LoginScreenStack = createStackNavigator()
-function LoginScreenNavigator() {
-    return(
-        <LoginScreenStack.Navigator>
-            <LoginScreenStack.Screen name ="Login" component={LoginScreen} options = {{headerTitle: 'Login', headerLeft: () => <MenuIcon />}}
-            />
-        </LoginScreenStack.Navigator>
-    )
-}
+// const LoginScreenStack = createStackNavigator()
+// function LoginScreenNavigator() {
+//     return(
+//         <LoginScreenStack.Navigator>
+//             <LoginScreenStack.Screen name ="Login" component={LoginScreen} options = {{headerTitle: 'Login', headerLeft: () => <MenuIcon />}}
+//             />
+//         </LoginScreenStack.Navigator>
+//     )
+// }
 
 import ProductScreen from '../ProductScreen/ProductScreen';
 
@@ -52,15 +52,13 @@ function ProductScreenNavigator() {
     )
 }
 
-// import SignOut from '../LogoutScreen/Logout'
-// import HomeScreen from '../HomeScreen/HomeScreen';
-// import ProductScreen from '../ProductScreen/ProductScreen';
+import SignOut from '../LogoutScreen/LogoutScreen'
 
-// const LogoutScreenstack = createStackNavigator()
-// function LogoutScreenNavigator() {
-//     return(
-//         <LogoutScreenstack.Navigator>
-//             <LogoutScreenstack.Screen name = 'Logout' component={SignOut} options = {{headerTitle: 'Logout'}} />
-//         </LogoutScreenstack.Navigator>
-//     )
-// }
+const LogoutScreenstack = createStackNavigator()
+function LogoutScreenNavigator() {
+    return(
+        <LogoutScreenstack.Navigator>
+            <LogoutScreenstack.Screen name = 'Logout' component={SignOut} options = {{headerTitle: 'Logout'}} />
+        </LogoutScreenstack.Navigator>
+    )
+}
