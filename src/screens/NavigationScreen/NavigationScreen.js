@@ -9,7 +9,7 @@ export default function NavigationScreen() {
             <Drawer.Screen name = "Home" component={HomeScreenNavigator} />
             <Drawer.Screen name = "Login" component={LoginScreenNavigator} />
             <Drawer.Screen name = "Categories" component={ProductScreenNavigator} />
-            {/* <Drawer.Screen name = "Logout" component={LogoutScreenNavigator} /> */}
+            <Drawer.Screen name = "Logout" component={LogoutScreenNavigator} />
         </Drawer.Navigator>
     )
 }
@@ -52,15 +52,13 @@ function ProductScreenNavigator() {
     )
 }
 
-// import SignOut from '../LogoutScreen/Logout'
-// import HomeScreen from '../HomeScreen/HomeScreen';
-// import ProductScreen from '../ProductScreen/ProductScreen';
+import SignOut from '../LogoutScreen/LogoutScreen'
 
-// const LogoutScreenstack = createStackNavigator()
-// function LogoutScreenNavigator() {
-//     return(
-//         <LogoutScreenstack.Navigator>
-//             <LogoutScreenstack.Screen name = 'Logout' component={SignOut} options = {{headerTitle: 'Logout'}} />
-//         </LogoutScreenstack.Navigator>
-//     )
-// }
+const LogoutScreenstack = createStackNavigator()
+function LogoutScreenNavigator() {
+    return(
+        <LogoutScreenstack.Navigator>
+            <LogoutScreenstack.Screen name = 'Logout' component={SignOut} options = {{headerTitle: 'Logout'}} />
+        </LogoutScreenstack.Navigator>
+    )
+}
