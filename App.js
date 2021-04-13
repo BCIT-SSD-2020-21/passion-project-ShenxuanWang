@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {
     LoginScreen,
     RegistrationScreen,
-    ProductScreen,
     NavigationScreen,
 } from './src/screens';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -20,9 +19,8 @@ export default function App() {
                 <Stack.Navigator>
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Home" component={NavigationScreen}  options={{headerShown: false}}/>                    
-                    <Stack.Screen name="Registration" component={RegistrationScreen} />                                        
-                    <Stack.Screen name="Categories" component={ProductScreen} />
-                </Stack.Navigator>
+                    <Stack.Screen name="Registration" component={RegistrationScreen} />                                     
+                </Stack.Navigator>               
             </NavigationContainer>
         </SafeAreaProvider>
     );
