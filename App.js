@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
     LoginScreen,
-    RegistrationScreen,
     NavigationScreen,
+    ProductDetailScreen,
 } from './src/screens';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -19,7 +19,7 @@ export default function App() {
                 <Stack.Navigator>
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Home" component={NavigationScreen}  options={{headerShown: false}}/>                    
-                    <Stack.Screen name="Registration" component={RegistrationScreen} />                                     
+                    <Stack.Screen name="Detail" component={ProductDetailScreen} />                                     
                 </Stack.Navigator>               
             </NavigationContainer>
         </SafeAreaProvider>
