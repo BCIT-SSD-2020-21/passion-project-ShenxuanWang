@@ -9,3 +9,5 @@ export { default as ProductScreen } from './ProductScreen/ProductScreen';
 export { default as NavigationScreen } from './NavigationScreen/NavigationScreen';
 
 export {default as Logout} from './LogoutScreen/LogoutScreen';
+
+export { default as ProductDetailScreen } from './ProductDetailScreen/ProductDetailScreen';
