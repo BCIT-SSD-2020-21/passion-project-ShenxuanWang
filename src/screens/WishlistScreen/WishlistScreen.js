@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import styles from './styles';
@@ -32,32 +32,57 @@ export default function ProductScreen({navigation}) {
             "Loading Error"
           );
         }
-      };
-    
-      //Call when component is rendered
-      useEffect(() => {
+    };
+
+    //Call once uid have changed
+    useEffect(() => {
         getWishlistProducts();
-      }, [isFocused]);
+        }, [uid]);
+
+    //Call when component is rendered
+    useEffect(() => {
+        getWishlistProducts();
+        }, [isFocused]);
+
+    const deleteWishlistProducts = ({item}) => {
+        db
+        .collection('users')
+        .doc(uid)
+        .collection('wishList')
+        .doc(item.name)
+        .delete()
+        .then(getWishlistProducts(),
+        alert('Product removed from wish list!'));
+    };
 
     const createProductCard = ({ item }) => {
 
         return (
-            <TouchableOpacity
-                onPress={() =>
-                    navigation.navigate('Detail', {
-                        name: item.name,
-                        price: item.price,
-                        weight: item.weight,
-                        image: item.image,
-                        nutrition: item.nutrition,
-                    })
-                }
-            >
-                <ProductCard
-                    name={item.name}
-                    image={item.image}
-                />
-            </TouchableOpacity>
+            <View>
+                <TouchableOpacity
+                    onPress={() =>
+                        navigation.navigate('Detail', {
+                            name: item.name,
+                            price: item.price,
+                            weight: item.weight,
+                            image: item.image,
+                            nutrition: item.nutrition,
+                        })
+                    }
+                >
+                    <ProductCard
+                        name={item.name}
+                        image={item.image}
+                    />
+                </TouchableOpacity>
+                <View style={[{ width: "90%", marginTop: 10, marginLeft: 15}]}>
+                    <Button
+                        onPress={() => deleteWishlistProducts({item})}
+                        title="delete" 
+                        color="#F6AAB2"
+                    />
+                </View>
+            </View>
         );
     };
 
