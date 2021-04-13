@@ -15,6 +15,8 @@
 * npm/expo install @firebase/auth
 * npm/expo install @firebase/firestore
 * expo install react-native-keyboard-aware-scroll-view
+* expo install react-native-elements
+* expo install @react-navigation/bottom-tabs
 
 ## Prototypes Images
 * Login Screen
