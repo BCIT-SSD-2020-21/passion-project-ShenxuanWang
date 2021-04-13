@@ -22,13 +22,12 @@ export default function ProductScreen({navigation}) {
           const tempPositions = [];
           var snapshot = await db.collection('users')
           .doc(uid).collection("wishList").get();
-          console.log(snapshot)
           snapshot.forEach((doc) => {
             tempPositions.push(doc.data());
           });
           setPositions([...tempPositions]);
         } catch (e) {
-          setErrorMessage(
+          console.log(
             "Loading Error"
           );
         }
