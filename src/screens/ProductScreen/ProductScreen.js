@@ -53,8 +53,12 @@ export default function ProductScreen({navigation}) {
         return (
             <TouchableOpacity
                 onPress={() =>
-                    navigation.navigate('Categories', {
+                    navigation.navigate('Detail', {
                         name: item.name,
+                        price: item.price,
+                        weight: item.weight,
+                        image: item.image,
+                        nutrition: item.nutrition,
                     })
                 }
             >
