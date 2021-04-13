@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import styles from './styles';
 import firebase from 'firebase';
+import Uri from './TabUri'
 
 export default function ProductScreen({navigation}) {
     const db = firebase.firestore();
     const [positions, setPositions] = useState([]);
-
-    
+    const [canPositions, setCanPositions] = useState([]);
 
     const getProducts = async () => {
         try {
@@ -25,32 +26,27 @@ export default function ProductScreen({navigation}) {
           );
         }
       };
+
+      const getCanFood = async () => {
+        try {
+          const tempPositions = [];
+          var snapshot = await db.collection("CanFood").get();
+          snapshot.forEach((doc) => {
+            tempPositions.push(doc.data());
+          });
+          setCanPositions([...tempPositions]);
+        } catch (e) {
+          setErrorMessage(
+            "Loading Error"
+          );
+        }
+      };
     
       //Call when component is rendered
       useEffect(() => {
         getProducts();
+        getCanFood();
       }, []);
-
-    // useEffect(() => {
-    //     (async () => {
-    //         // Get user auth from firestore auth
-    //         const currentUser = firebase.auth().currentUser;
-
-            // Set product details and user positions
-    //         db.collection('users')
-    //             .doc(currentUser.uid)
-    //             .collection('Product')
-    //             .onSnapshot((querySnapshot) => {
-    //                 let tempPositions = [];
-
-    //                 querySnapshot.forEach((docSnapshot) => {
-    //                     tempPositions = (docSnapshot.data());
-    //                 });
-
-    //                 setPositions([...tempPositions]);
-    //             });
-    //     })();
-    // }, []);
 
     const createProductCard = ({ item }) => {
 
@@ -64,25 +60,82 @@ export default function ProductScreen({navigation}) {
             >
                 <ProductCard
                     name={item.name}
-                    // price={item.price}
-                    // weight={item.weight}
                     image={item.image}
                 />
             </TouchableOpacity>
         );
     };
 
+    function CatDryfoodScreen() {
+        return (
+            <View style={styles.root}>
+                <Text style={styles.text}>Cat Dry Food:</Text>
+                <FlatList
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(data) =>
+                        `${data.name} ${data.price} ${data.weight} ${data.image}`
+                    }
+                    data={positions}
+                    renderItem={createProductCard}
+                />
+            </View>
+        )
+    }
+
+    function CatCanfoodScreen() {
+        return (
+            <View style={styles.root}>
+                <Text style={styles.text}>Cat Can Food:</Text>
+                <FlatList
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(data) =>
+                        `${data.name} ${data.price} ${data.weight} ${data.image}`
+                    }
+                    data={canPositions}
+                    renderItem={createProductCard}
+                />
+            </View>
+        )
+    }
+
+    const Tab = createBottomTabNavigator();
+
     return (
-        <View style={styles.root}>
-            <Text style={styles.portfolioText}>Categories:</Text>
-            <FlatList
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(data) =>
-                    `${data.name} ${data.price} ${data.weight} ${data.image}`
-                }
-                data={positions}
-                renderItem={createProductCard}
+        <Tab.Navigator>
+            <Tab.Screen 
+                name="CatDryfood" 
+                component={CatDryfoodScreen} 
+                options={{
+                    tabBarLabel: 'Cat Dry Foods',
+                    tabBarIcon: ({size,focused,color}) => {
+                        return (
+                        <Image
+                            style={{ width: size, height: size }}
+                            source={{
+                            uri: Uri.dryFoodUri,
+                            }}
+                            />
+                        );
+                    },
+                }}
             />
-        </View>
+            <Tab.Screen 
+                name="Cat Can food" 
+                component={CatCanfoodScreen} 
+                options={{
+                    tabBarLabel: 'Cat Can Foods',
+                    tabBarIcon: ({size,focused,color}) => {
+                        return (
+                        <Image
+                            style={{ width: size, height: size }}
+                            source={{
+                            uri: Uri.canFoodUri,
+                            }}
+                            />
+                        );
+                    },
+                }}
+            />
+        </Tab.Navigator>
     );
 }

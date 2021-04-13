@@ -6,8 +6,10 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
     },
-    portfolioText: {
+    text: {
         fontWeight: '700',
         fontSize: 18,
+        marginTop: 10, 
+        textAlign: 'center'
     },
 });
