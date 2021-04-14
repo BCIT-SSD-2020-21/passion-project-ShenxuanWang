@@ -32,6 +32,7 @@ export default function ProductDetailScreen(props) {
     };
 
     const handleShoppingCart = async () => {
+        var totalPrice = product.price * parseInt(quantity)
         await db
             .collection('users')
             .doc(uid)
@@ -43,7 +44,8 @@ export default function ProductDetailScreen(props) {
                 weight: product.weight,
                 image: product.image,
                 nutrition: product.nutrition,
-                quantity: quantity,
+                quantity: parseInt(quantity),
+                totalPrice: totalPrice,
             }, {merge: true})
             .then(alert('Product added to shopping cart!'));
     };
