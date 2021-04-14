@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import ShoppingCard from '../../components/ShoppingCard/ShoppingCard';
 import styles from './styles';
@@ -50,6 +50,17 @@ export default function ShoppingCartScreen({navigation}) {
         getShoppingCartProducts();
         }, [isFocused]);
 
+    const deleteShoppingCartProducts = ({item}) => {
+        db
+        .collection('users')
+        .doc(uid)
+        .collection('shoppingCart')
+        .doc(item.name)
+        .delete()
+        .then(getShoppingCartProducts(),
+        alert('Product removed from shopping cart!'));
+    };
+
     const createProductCard = ({ item }) => {
 
         return (
@@ -72,13 +83,20 @@ export default function ShoppingCartScreen({navigation}) {
                         quantity={item.quantity}
                     />
                 </TouchableOpacity>
+                <View style={[{ width: "90%", marginTop: 10, marginLeft: 15}]}>
+                    <Button
+                        onPress={() => deleteShoppingCartProducts({item})}
+                        title="delete" 
+                        color="#F6AAB2"
+                    />
+                </View>
             </View>
         );
     };
 
     return (
         <View style={styles.root}>
-            <Text style={styles.text}>Cart List:</Text>
+            <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center', padding: 10}}>Total Price of All Products: ${calcTotalPrice().toFixed(2)}</Text>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 keyExtractor={(data) =>
@@ -87,7 +105,6 @@ export default function ShoppingCartScreen({navigation}) {
                 data={positions}
                 renderItem={createProductCard}
             />
-            <Text style={{backgroundColor: '#b38df7', textAlign: 'center'}}>Total Price of All Products: {calcTotalPrice().toFixed(2)}</Text>
         </View>
     )
 
