@@ -9,6 +9,7 @@ export default function NavigationScreen() {
             <Drawer.Screen name = "Home" component={HomeScreenNavigator} />
             <Drawer.Screen name = "Categories" component={ProductScreenNavigator} />
             <Drawer.Screen name = "Wishlist" component={WishlistScreenNavigator} />
+            <Drawer.Screen name = "ShoppingCart" component={ShoppingCartScreenNavigator} />
             <Drawer.Screen name = "Logout" component={LogoutScreenNavigator} />
         </Drawer.Navigator>
     )
@@ -49,6 +50,18 @@ function WishlistScreenNavigator() {
             <WishlisttScreenStack.Screen name ="Wishlist" component={WishlistScreen} options = {{headerTitle: 'Wishlist', headerLeft: () => <MenuIcon />}}
             />
         </WishlisttScreenStack.Navigator>
+    )
+}
+
+import ShoppingCartScreen from '../ShoppingCartScreen/ShoppingCartScreen';
+
+const ShoppingCartScreenStack = createStackNavigator()
+function ShoppingCartScreenNavigator() {
+    return(
+        <ShoppingCartScreenStack.Navigator>
+            <ShoppingCartScreenStack.Screen name ="ShoppingCart" component={ShoppingCartScreen} options = {{headerTitle: 'ShoppingCart', headerLeft: () => <MenuIcon />}}
+            />
+        </ShoppingCartScreenStack.Navigator>
     )
 }
 

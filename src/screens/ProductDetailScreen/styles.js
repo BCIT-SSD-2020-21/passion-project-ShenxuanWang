@@ -24,5 +24,9 @@ export default StyleSheet.create({
         fontSize: 14,
         marginLeft: 20,
         marginRight: 20,
+    },
+    button: {
+        display: 'flex',
+        flexDirection: 'row'
     }
 })
