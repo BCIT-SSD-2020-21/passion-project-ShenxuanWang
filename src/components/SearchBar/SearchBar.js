@@ -11,7 +11,8 @@ export default function SearchBar ({ term, onTermChange, onTermSubmit }) {
                 value={term}
                 style={styles.input}
                 placeholder="Search" 
-                onChangeText={newTerm => onTermChange(newTerm)}
+                autoFocus={true}
+                onChangeText={term => onTermChange(term)}
                 onEndEditing={() => onTermSubmit()} 
             />           
         </View>

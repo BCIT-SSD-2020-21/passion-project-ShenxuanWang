@@ -130,7 +130,7 @@ export default function ProductScreen({navigation}) {
             <View style={styles.root}>
                 <SearchBar
                     term={result}
-                    onTermChange={text => setResult(text)}
+                    onTermChange={result => setResult(result)}
                     onTermSubmit={() => searchApi()}
                 />
                 {product && (
