@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     root :{
@@ -15,7 +15,13 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         textAlignVertical: 'center',
         marginTop: 10,
-        marginBottom: 30
+        marginBottom: 30,
+        ...Platform.select({
+            ios: {
+                lineHeight: 140
+            },
+            android: {}
+        })
     },
     heading: {
         color: '#b38df7',
@@ -38,7 +44,7 @@ export default StyleSheet.create({
     },
     product: {
         width: 200,
-        fontSize: 14,
+        fontSize: 16,
         borderWidth: 1,
         textAlign: 'center'
     },
