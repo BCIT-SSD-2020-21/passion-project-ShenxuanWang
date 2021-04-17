@@ -7,6 +7,7 @@ export default function NavigationScreen() {
     return(
         <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen name = "Home" component={HomeScreenNavigator} />
+            <Drawer.Screen name = "Search" component={SearchScreenNavigator} />
             <Drawer.Screen name = "Categories" component={ProductScreenNavigator} />
             <Drawer.Screen name = "Wishlist" component={WishlistScreenNavigator} />
             <Drawer.Screen name = "ShoppingCart" component={ShoppingCartScreenNavigator} />
@@ -26,6 +27,18 @@ function HomeScreenNavigator() {
             <HomeScreenStack.Screen name = "Home" component={HomeScreen} options = {{headerTitle: 'Home', headerLeft: () => <MenuIcon />}}
             />
         </HomeScreenStack.Navigator>
+    )
+}
+
+import SearchScreen from '../SearchScreen/SearchScreen';
+
+const SearchScreenStack = createStackNavigator()
+function SearchScreenNavigator() {
+    return(
+        <SearchScreenStack.Navigator>
+            <SearchScreenStack.Screen name ="Search" component={SearchScreen} options = {{headerTitle: 'Search', headerLeft: () => <MenuIcon />}}
+            />
+        </SearchScreenStack.Navigator>
     )
 }
 
