@@ -27,6 +27,7 @@ export default StyleSheet.create({
     },
     button: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center'
     }
 })

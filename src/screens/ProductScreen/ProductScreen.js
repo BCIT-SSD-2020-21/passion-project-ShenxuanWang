@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Button, TextInput } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import styles from './styles';
 import firebase from 'firebase';
 import Uri from './TabUri'
+// import { TextInput } from 'react-native-gesture-handler';
 
 export default function ProductScreen({navigation}) {
     const db = firebase.firestore();
@@ -50,26 +51,6 @@ export default function ProductScreen({navigation}) {
         getProducts();
         getCanFood();
     }, []);
-
-    const searchApi = async () => {
-        console.log(result)
-        try {
-            const productPositions = [];
-            var canFood = await db.collection("CanFood").where("name", ">=", result).get();
-            canFood.forEach((doc) => {
-                productPositions.push(doc.data());
-            });
-            var dryFood = await db.collection("Product").where("name", ">=", result).get();
-            dryFood.forEach((doc) => {
-                productPositions.push(doc.data());
-            });
-            setProduct([...productPositions]);
-        } catch (e) {
-            console.log(
-            "Loading Error"
-            );
-        }
-    };
 
     const createProductCard = ({ item }) => {
 
@@ -125,53 +106,10 @@ export default function ProductScreen({navigation}) {
         )
     }
 
-    function SearchScreen() {
-        return (
-            <View style={styles.root}>
-                <SearchBar
-                    term={result}
-                    onTermChange={result => setResult(result)}
-                    onTermSubmit={() => searchApi()}
-                />
-                {product && (
-                    <FlatList
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(data) =>
-                        `${data.name} ${data.price} ${data.weight} ${data.image}`
-                    }
-                    data={product}
-                    renderItem={createProductCard}
-                />
-                )}
-            </View>
-        )
-    }
-
-    // useEffect(() => {
-    //     searchApi();
-    // }, [result]);
-
     const Tab = createBottomTabNavigator();
 
     return (
         <Tab.Navigator>
-            <Tab.Screen 
-                name="Search" 
-                component={SearchScreen} 
-                options={{
-                    tabBarLabel: 'Search',
-                    tabBarIcon: ({size,focused,color}) => {
-                        return (
-                        <Image
-                            style={{ width: size, height: size }}
-                            source={{
-                            uri: Uri.dryFoodUri,
-                            }}
-                            />
-                        );
-                    },
-                }}
-            />
             <Tab.Screen 
                 name="CatDryfood" 
                 component={CatDryfoodScreen} 

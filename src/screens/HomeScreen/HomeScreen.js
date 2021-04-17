@@ -13,7 +13,7 @@ export default function HomeScreen({navigation}) {
                 <View style={{height:150, flex:1, flexDirection:'row'}}>
                 <Image source={{uri: Logo_Image}} style={styles.logo} />
                 <Text style={styles.name}>PUDIBAO MEOW</Text>
-                </View>
+                </View>               
             </Text>
             <Text style={styles.heading}>Welcome Shopping Here</Text>
             <Text style={styles.title}>Shipping Information</Text>
